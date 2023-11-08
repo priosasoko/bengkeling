@@ -1,0 +1,143 @@
+{
+  "unpublishedPage": {
+    "name": "Montir Information",
+    "slug": "montir-information",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 918,
+          "containerStyle": "none",
+          "snapRows": 84,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 87,
+          "minHeight": 940,
+          "useAutoLayout": true,
+          "parentColumnSpace": 1,
+          "responsiveBehavior": "fill",
+          "dynamicBindingPathList": [],
+          "leftColumn": 0,
+          "positioning": "vertical",
+          "flexLayers": [
+            {
+              "children": [
+                {
+                  "id": "0zmlwdooqp",
+                  "align": "start"
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "id": "spbg2orj26",
+                  "align": "start"
+                },
+                {
+                  "id": "38b1jcd1mj",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "id": "tj26o7g4fb",
+                  "align": "start"
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "id": "gxpv6gtqcv",
+                  "align": "center"
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "id": "4bqcmfudls",
+                  "align": "center"
+                }
+              ]
+            }
+          ]
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Montir Information_utils.getDeliveryZones",
+              "name": "utils.getDeliveryZones",
+              "collectionId": "Montir Information_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const deliveryZones = await fetchDeliveryZone.run();\n  return deliveryZones.map(v => {\n    return {\n      label: v.zone,\n      value: v.id\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Montir Information_utils.getDriverOrders",
+              "name": "utils.getDriverOrders",
+              "collectionId": "Montir Information_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const driverOrders = await fetchDriverOrders.run();\n  return driverOrders.map(o => {\n    return {\n      Id: o.id,\n      Time: new Date(o.created).toLocaleTimeString(),\n      Name: o.customer,\n      Address: o.pickup_address,\n      Status: o.status,\n      Rating: o.review\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Montir Information_utils.getVehicles",
+              "name": "utils.getVehicles",
+              "collectionId": "Montir Information_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const vehicles = await fetchVehicleType.run();\n  return vehicles.map(v => {\n    return {\n      label: v.type,\n      value: v.id\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Montir Information_utils.getDrivers",
+              "name": "utils.getDrivers",
+              "collectionId": "Montir Information_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const allDrivers = await fetchDrivers.run();\n  const status = sel_driverStatus.selectedOptionValue;\n  let filteredDriver = allDrivers;\n  if (status) {\n    const filteredData = allDrivers.filter(d => d.status === status);\n    filteredDriver = filteredData;\n  }\n  return filteredDriver.map(m => {\n    return {\n      DriverID: `D00${m.id}`,\n      ID: m.id,\n      Photo: m.image,\n      Name: m.fullname,\n      Phone: m.phone,\n      Address: m.address,\n      Email: m.email,\n      DeliveryCommission: m.commission,\n      Vehicle: m.vehicle_type,\n      Status: m.status\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Montir Information",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "644b91f6a9a0f069b4feaa24_644f85ffbf34ca68b34eec9a"
+}

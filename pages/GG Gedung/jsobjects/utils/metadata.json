@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "utils",
+    "pageId": "GG Gedung",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "GG Gedung_utils",
+  "deleted": false,
+  "gitSyncId": "644b91f6a9a0f069b4feaa24_645cb84de5c0437057b7c739"
+}

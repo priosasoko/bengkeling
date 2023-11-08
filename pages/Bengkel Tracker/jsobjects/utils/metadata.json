@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "utils",
+    "pageId": "Bengkel Tracker",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "Bengkel Tracker_utils",
+  "deleted": false,
+  "gitSyncId": "644b91f6a9a0f069b4feaa24_645e1095e4995a7c25a4e71e"
+}

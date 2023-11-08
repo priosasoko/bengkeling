@@ -1,0 +1,122 @@
+{
+  "unpublishedPage": {
+    "name": "GG Gedung",
+    "slug": "gg-gedung",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 2028,
+          "containerStyle": "none",
+          "snapRows": 84,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 87,
+          "minHeight": 910,
+          "useAutoLayout": true,
+          "parentColumnSpace": 1,
+          "responsiveBehavior": "fill",
+          "dynamicBindingPathList": [],
+          "leftColumn": 0,
+          "positioning": "vertical",
+          "flexLayers": [
+            {
+              "children": [
+                {
+                  "id": "tg0no7e2es",
+                  "align": "start"
+                },
+                {
+                  "id": "0pqmur7nol",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "id": "fc80j31mut",
+                  "align": "start"
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "id": "2o9dp0w36m",
+                  "align": "center"
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "id": "a8wqobeuxh",
+                  "align": "center"
+                }
+              ]
+            }
+          ]
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "GG Gedung_utils.getAllCuisines",
+              "name": "utils.getAllCuisines",
+              "collectionId": "GG Gedung_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const cuisines = await fetchCuisines.run();\n  return cuisines.map(c => {\n    return {\n      label: c.name,\n      value: c.id\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "GG Gedung_utils.getPartners",
+              "name": "utils.getPartners",
+              "collectionId": "GG Gedung_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const allRestaurants = await fetchRestaurants.run();\n  const allCuisines = await fetchPartnerCuisines.run();\n  return allRestaurants.map(r => {\n    return {\n      PartnerID: `P00${r.id}`,\n      Id: r.id,\n      Name: r.name,\n      Phone: r.phone,\n      Address: r.address,\n      Email: r.email,\n      Category: allCuisines.filter(c => c.restaurant_id === r.id).map(c => c.cuisine_name),\n      DeliveryCommission: r.commission,\n      Revenue: r.revenue,\n      Review: r.review,\n      PrepTime: r.prep_time,\n      MaxDeliveryTime: r.max_delivery_time,\n      DeliveryRadius: r.delivery_radius\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "GG Gedung_utils.getPartnerCuisines",
+              "name": "utils.getPartnerCuisines",
+              "collectionId": "GG Gedung_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const partnerCuisines = await fetchSinglePartnerCuisines.run();\n  return partnerCuisines;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "GG Gedung",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "644b91f6a9a0f069b4feaa24_644f81abfa5a4058b8774af4"
+}
